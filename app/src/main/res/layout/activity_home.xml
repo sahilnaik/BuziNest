@@ -65,8 +65,8 @@
 
     <Button
         android:id="@+id/btnExploreHome"
-        android:layout_width="137dp"
-        android:layout_height="138dp"
+        android:layout_width="132dp"
+        android:layout_height="180dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/hind_madurai_bold"
         android:gravity="clip_horizontal"
@@ -77,15 +77,15 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.175"
+        app:layout_constraintHorizontal_bias="0.172"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.253" />
+        app:layout_constraintVertical_bias="0.206" />
 
     <Button
         android:id="@+id/btnRegisterHome"
-        android:layout_width="136dp"
-        android:layout_height="140dp"
+        android:layout_width="134dp"
+        android:layout_height="173dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/hind_madurai_bold"
         android:gravity="clip_horizontal"
@@ -96,15 +96,15 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintHorizontal_bias="0.844"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.371" />
+        app:layout_constraintVertical_bias="0.34" />
 
     <Button
         android:id="@+id/btnRegisterHome2"
-        android:layout_width="136dp"
-        android:layout_height="140dp"
+        android:layout_width="123dp"
+        android:layout_height="154dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/hind_madurai_bold"
         android:gravity="clip_horizontal"
@@ -115,15 +115,15 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.174"
+        app:layout_constraintHorizontal_bias="0.192"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.758" />
+        app:layout_constraintVertical_bias="0.745" />
 
     <Button
         android:id="@+id/btnRegisterHome3"
-        android:layout_width="124dp"
-        android:layout_height="138dp"
+        android:layout_width="127dp"
+        android:layout_height="158dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/hind_madurai_bold"
         android:gravity="clip_horizontal"
@@ -134,52 +134,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.837"
+        app:layout_constraintHorizontal_bias="0.845"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.865" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/btnExploreHome"
-        app:layout_constraintEnd_toEndOf="@+id/btnExploreHome"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="@+id/btnExploreHome"
-        app:layout_constraintTop_toTopOf="@+id/btnExploreHome"
-        app:layout_constraintVertical_bias="0.32999998"
-        app:srcCompat="@drawable/search_64px" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="50dp"
-        android:layout_height="44dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnRegisterHome"
-        app:layout_constraintEnd_toEndOf="@+id/btnRegisterHome"
-        app:layout_constraintStart_toStartOf="@+id/btnRegisterHome"
-        app:layout_constraintTop_toTopOf="@+id/btnRegisterHome"
-        app:srcCompat="@drawable/check_50px" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/btnRegisterHome2"
-        app:layout_constraintEnd_toEndOf="@+id/btnRegisterHome2"
-        app:layout_constraintStart_toStartOf="@+id/btnRegisterHome2"
-        app:layout_constraintTop_toTopOf="@+id/btnRegisterHome2"
-        app:layout_constraintVertical_bias="0.314"
-        app:srcCompat="@drawable/chat_room_64px" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="50dp"
-        android:layout_height="47dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnRegisterHome3"
-        app:layout_constraintEnd_toEndOf="@+id/btnRegisterHome3"
-        app:layout_constraintStart_toStartOf="@+id/btnRegisterHome3"
-        app:layout_constraintTop_toTopOf="@+id/btnRegisterHome3"
-        app:srcCompat="@drawable/add_50px" />
+        app:layout_constraintVertical_bias="0.848" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
