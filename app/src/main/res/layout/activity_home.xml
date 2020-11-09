@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bghome"
+    tools:context=".HomeActivity">
+
+    <TextView
+        android:id="@+id/greeting"
+        android:layout_width="318dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/hind_madurai_semibold"
+        android:textAllCaps="true"
+        android:textColor="#3a2c3e"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.051" />
+
+    <Button
+        android:id="@+id/btnlogoutHome"
+        android:layout_width="75dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="21dp"
+        android:background="#00FFFFFF"
+        android:fontFamily="@font/hind_madurai_bold"
+        android:text="Log out"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="#ef5f3c"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/notGreeting" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="34dp"
+        android:fontFamily="@font/catamaran_semibold"
+        android:text="Not"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/notGreeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="34dp"
+        android:fontFamily="@font/catamaran_semibold"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView4" />
+
+    <Button
+        android:id="@+id/btnExploreHome"
+        android:layout_width="137dp"
+        android:layout_height="138dp"
+        android:background="#00FFFFFF"
+        android:fontFamily="@font/hind_madurai_bold"
+        android:gravity="clip_horizontal"
+        android:text="Explore"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#3f2f37"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.175"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.253" />
+
+    <Button
+        android:id="@+id/btnRegisterHome"
+        android:layout_width="136dp"
+        android:layout_height="140dp"
+        android:background="#00FFFFFF"
+        android:fontFamily="@font/hind_madurai_bold"
+        android:gravity="clip_horizontal"
+        android:text="Register your business"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#3f2f37"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.371" />
+
+    <Button
+        android:id="@+id/btnRegisterHome2"
+        android:layout_width="136dp"
+        android:layout_height="140dp"
+        android:background="#00FFFFFF"
+        android:fontFamily="@font/hind_madurai_bold"
+        android:gravity="clip_horizontal"
+        android:text="Chat"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#3f2f37"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.174"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.758" />
+
+    <Button
+        android:id="@+id/btnRegisterHome3"
+        android:layout_width="124dp"
+        android:layout_height="138dp"
+        android:background="#00FFFFFF"
+        android:fontFamily="@font/hind_madurai_bold"
+        android:gravity="clip_horizontal"
+        android:text="Wishlist and cart"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#3f2f37"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.837"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.865" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/btnExploreHome"
+        app:layout_constraintEnd_toEndOf="@+id/btnExploreHome"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="@+id/btnExploreHome"
+        app:layout_constraintTop_toTopOf="@+id/btnExploreHome"
+        app:layout_constraintVertical_bias="0.32999998"
+        app:srcCompat="@drawable/search_64px" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="44dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRegisterHome"
+        app:layout_constraintEnd_toEndOf="@+id/btnRegisterHome"
+        app:layout_constraintStart_toStartOf="@+id/btnRegisterHome"
+        app:layout_constraintTop_toTopOf="@+id/btnRegisterHome"
+        app:srcCompat="@drawable/check_50px" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRegisterHome2"
+        app:layout_constraintEnd_toEndOf="@+id/btnRegisterHome2"
+        app:layout_constraintStart_toStartOf="@+id/btnRegisterHome2"
+        app:layout_constraintTop_toTopOf="@+id/btnRegisterHome2"
+        app:layout_constraintVertical_bias="0.314"
+        app:srcCompat="@drawable/chat_room_64px" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="50dp"
+        android:layout_height="47dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRegisterHome3"
+        app:layout_constraintEnd_toEndOf="@+id/btnRegisterHome3"
+        app:layout_constraintStart_toStartOf="@+id/btnRegisterHome3"
+        app:layout_constraintTop_toTopOf="@+id/btnRegisterHome3"
+        app:srcCompat="@drawable/add_50px" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

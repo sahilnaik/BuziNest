@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/catamaran_semibold</item>
+        <item>@font/hind_madurai_bold</item>
+        <item>@font/hind_madurai_medium</item>
+        <item>@font/hind_madurai_semibold</item>
+        <item>@font/hind_siliguri_bold</item>
+        <item>@font/hind_siliguri_semibold</item>
+        <item>@font/montserrat</item>
+        <item>@font/montserrat_bold</item>
+    </array>
+</resources>
