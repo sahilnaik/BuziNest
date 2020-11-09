@@ -17,10 +17,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintHorizontal_bias="0.279"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.051" />
+        app:layout_constraintVertical_bias="0.025" />
 
     <Button
         android:id="@+id/btnlogoutHome"
@@ -65,78 +65,78 @@
 
     <Button
         android:id="@+id/btnExploreHome"
-        android:layout_width="133dp"
-        android:layout_height="167dp"
+        android:layout_width="156dp"
+        android:layout_height="198dp"
         android:background="#00FFFFFF"
-        android:fontFamily="@font/hind_madurai_bold"
+        android:fontFamily="@font/montserrat"
         android:gravity="clip_horizontal"
         android:text="Explore"
         android:textAlignment="center"
-        android:textAllCaps="true"
+        android:textAllCaps="false"
         android:textColor="#3f2f37"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintHorizontal_bias="0.097"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.19999999" />
+        app:layout_constraintVertical_bias="0.229" />
 
     <Button
         android:id="@+id/btnRegisterHome"
-        android:layout_width="134dp"
-        android:layout_height="173dp"
+        android:layout_width="141dp"
+        android:layout_height="201dp"
         android:background="#00FFFFFF"
-        android:fontFamily="@font/hind_madurai_bold"
+        android:fontFamily="@font/montserrat"
         android:gravity="clip_horizontal"
         android:text="Register your business"
         android:textAlignment="center"
-        android:textAllCaps="true"
+        android:textAllCaps="false"
         android:textColor="#3f2f37"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.844"
+        app:layout_constraintHorizontal_bias="0.868"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.34" />
+        app:layout_constraintVertical_bias="0.277" />
 
     <Button
         android:id="@+id/btnRegisterHome2"
-        android:layout_width="123dp"
-        android:layout_height="154dp"
+        android:layout_width="156dp"
+        android:layout_height="194dp"
         android:background="#00FFFFFF"
-        android:fontFamily="@font/hind_madurai_bold"
+        android:fontFamily="@font/montserrat"
         android:gravity="clip_horizontal"
         android:text="Chat"
         android:textAlignment="center"
-        android:textAllCaps="true"
+        android:textAllCaps="false"
         android:textColor="#3f2f37"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.74" />
+        app:layout_constraintVertical_bias="0.761" />
 
     <Button
         android:id="@+id/btnRegisterHome3"
-        android:layout_width="127dp"
-        android:layout_height="158dp"
+        android:layout_width="169dp"
+        android:layout_height="187dp"
         android:background="#00FFFFFF"
-        android:fontFamily="@font/hind_madurai_bold"
+        android:fontFamily="@font/montserrat"
         android:gravity="clip_horizontal"
         android:text="Wishlist and cart"
         android:textAlignment="center"
-        android:textAllCaps="true"
+        android:textAllCaps="false"
         android:textColor="#3f2f37"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintHorizontal_bias="0.928"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.848" />
+        app:layout_constraintVertical_bias="0.817" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
