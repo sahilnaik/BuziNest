@@ -42,6 +42,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnSignLogIn.setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar2);
+        edtEmailLogIn.animate().alpha(1).setDuration(1200);
+        edtPasswordLogIn.animate().alpha(1).setDuration(1200);
+        btnForgotPass.animate().alpha(1).setDuration(1500);
+        btnSignLogIn.animate().alpha(1).setDuration(1700);
+        edtPasswordLogIn.animate().translationY(-70).setDuration(700);
+        edtEmailLogIn.animate().translationY(-70).setDuration(700);
     }
 
     @Override

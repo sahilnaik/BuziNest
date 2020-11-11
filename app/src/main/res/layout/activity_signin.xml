@@ -26,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
+        android:alpha="0"
         android:background="#00FFFFFF"
         android:text="Log in here"
         android:textAllCaps="false"
@@ -36,26 +37,11 @@
         app:layout_constraintStart_toEndOf="@+id/bottomtext" />
 
     <EditText
-        android:id="@+id/edtPasswordSignIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="71dp"
-        android:layout_marginTop="276dp"
-        android:layout_marginEnd="71dp"
-        android:ems="10"
-        android:fontFamily="@font/hind_madurai_semibold"
-        android:hint="Set a password"
-        android:inputType="textPassword"
-        android:textColor="#1D0A27"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tagline" />
-
-    <EditText
         android:id="@+id/edtUsernameSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="168dp"
+        android:alpha="0"
         android:ems="10"
         android:fontFamily="@font/hind_madurai_semibold"
         android:hint="Set a username"
@@ -70,14 +56,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="71dp"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="236dp"
         android:layout_marginEnd="71dp"
+        android:alpha="0"
         android:ems="10"
         android:fontFamily="@font/hind_madurai_semibold"
         android:hint="Enter your email"
         android:inputType="textEmailAddress"
         android:textColor="#1D0A27"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tagline" />
+
+    <EditText
+        android:id="@+id/edtPasswordSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="71dp"
+        android:alpha="0"
+        android:ems="10"
+        android:fontFamily="@font/hind_madurai_semibold"
+        android:hint="Set a password"
+        android:inputType="textPassword"
+        android:textColor="#1D0A27"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tagline" />
 
@@ -149,6 +155,7 @@
         android:layout_width="250dp"
         android:layout_height="19dp"
         android:layout_marginTop="329dp"
+        android:alpha="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tagline" />

@@ -52,6 +52,15 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
         progressBar = findViewById(R.id.progressBar);
         passStrength = findViewById(R.id.passStrength);
         strengthView = findViewById(R.id.password_strength);
+        edtUsernameSignIn.animate().alpha(1).setDuration(1000);
+        edtEmailSignIn.animate().alpha(1).setDuration(1000);
+        edtPasswordSignIn.animate().alpha(1).setDuration(1000);
+        passStrength.animate().alpha(1).setDuration(1200);
+        strengthView.animate().alpha(1).setDuration(1000);
+        btnLogInSignIn.animate().alpha(1).setDuration(1700);
+        edtUsernameSignIn.animate().translationY(-70).setDuration(700);
+        edtEmailSignIn.animate().translationY(-70).setDuration(700);
+        edtPasswordSignIn.animate().translationY(-70).setDuration(700);
     }
 
     @Override

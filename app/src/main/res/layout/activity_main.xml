@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgsignup"
+    android:background="@drawable/bglogin"
     tools:context=".LoginActivity">
 
     <Button
@@ -43,6 +43,7 @@
         android:id="@+id/edtEmailLogIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:alpha="0"
         android:ems="10"
         android:fontFamily="@font/hind_madurai_semibold"
         android:hint="Enter your email"
@@ -50,15 +51,16 @@
         android:textColor="#FA6F5D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.295" />
+        app:layout_constraintVertical_bias="0.339" />
 
     <EditText
         android:id="@+id/edtPasswordLogIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:alpha="0"
         android:ems="10"
         android:fontFamily="@font/hind_madurai_semibold"
         android:hint="Enter your password"
@@ -66,10 +68,10 @@
         android:textColor="#FA6F5D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.415" />
+        app:layout_constraintVertical_bias="0.458" />
 
     <TextView
         android:id="@+id/textView"
@@ -88,6 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
+        android:alpha="0"
         android:background="#00FFFFFF"
         android:text="Sign up here"
         android:textAllCaps="false"
@@ -105,6 +108,7 @@
         android:layout_height="24dp"
         android:layout_marginTop="28dp"
         android:layout_marginBottom="180dp"
+        android:alpha="0"
         android:background="#00FFFFFF"
         android:fontFamily="@font/hind_siliguri_bold"
         android:text="Forgot Password?"
