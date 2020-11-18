@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -33,6 +34,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
     private FirebaseAuth mAuth;
     private ProgressBar progressBar, passStrength;
     private TextView strengthView;
+    private CheckBox checkBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
         progressBar = findViewById(R.id.progressBar);
         passStrength = findViewById(R.id.passStrength);
         strengthView = findViewById(R.id.password_strength);
+        checkBox = findViewById(R.id.checkBox);
         edtUsernameSignIn.animate().alpha(1).setDuration(1000);
         edtEmailSignIn.animate().alpha(1).setDuration(1000);
         edtPasswordSignIn.animate().alpha(1).setDuration(1000);
