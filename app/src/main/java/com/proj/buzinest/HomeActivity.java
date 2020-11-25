@@ -19,8 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class HomeActivity extends AppCompatActivity {
-    private Button btnLogoutHome;
+public class HomeActivity extends AppCompatActivity{
+    private Button btnLogoutHome, btnRegister, btnExploreHome, btnCartHome, btnChatHome;
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
@@ -29,6 +29,35 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        btnRegister = findViewById(R.id.btnRegisterHome);
+        btnExploreHome = findViewById(R.id.btnExploreHome);
+        btnCartHome = findViewById(R.id.btnCartHome);
+        btnChatHome = findViewById(R.id.btnChatHome);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, RegisterBusiness.class));
+            }
+        });
+        btnExploreHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              //  startActivity();
+            }
+        });
+
+        btnChatHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              //  startActivity();
+            }
+        });
+
+        btnCartHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             //   startActivity();
+            }
+        });
         btnLogoutHome = findViewById(R.id.btnlogoutHome);
         btnLogoutHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +66,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeActivity.this, LoginActivity.class));
             }
         });
+
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();

@@ -5,9 +5,12 @@ public class User {
     public User(){
 
     }
+
     public User(String Username, String email, String password){
         this.Username = Username;
         this.email = email;
         this.password = password;
+
     }
+
 }
