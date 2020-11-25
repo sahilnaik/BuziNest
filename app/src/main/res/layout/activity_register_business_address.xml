@@ -47,11 +47,11 @@
 
     <EditText
         android:id="@+id/edtLandmark"
-        android:layout_width="132dp"
-        android:layout_height="26dp"
+        android:layout_width="135dp"
+        android:layout_height="23dp"
         android:background="@null"
         android:ems="10"
-        android:fontFamily="@font/ntr"
+        android:fontFamily="@font/hind_madurai_semibold"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textColor="#EA7046"
@@ -59,64 +59,64 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.18"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.56" />
-
-    <EditText
-        android:id="@+id/edtState"
-        android:layout_width="132dp"
-        android:layout_height="26dp"
-        android:background="@null"
-        android:ems="10"
-        android:fontFamily="@font/ntr"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        android:textColor="#EA7046"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.176"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7" />
+        app:layout_constraintVertical_bias="0.566" />
+
+    <EditText
+        android:id="@+id/edtState"
+        android:layout_width="136dp"
+        android:layout_height="23dp"
+        android:background="@null"
+        android:ems="10"
+        android:fontFamily="@font/hind_madurai_semibold"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="#EA7046"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.163"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.701" />
 
     <EditText
         android:id="@+id/edtCountry"
-        android:layout_width="136dp"
-        android:layout_height="26dp"
+        android:layout_width="135dp"
+        android:layout_height="23dp"
         android:background="@null"
         android:ems="10"
-        android:fontFamily="@font/ntr"
+        android:fontFamily="@font/hind_siliguri_semibold"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textColor="#EA7046"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.834"
+        app:layout_constraintHorizontal_bias="0.844"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7" />
+        app:layout_constraintVertical_bias="0.702" />
 
     <EditText
         android:id="@+id/edtCity"
-        android:layout_width="132dp"
-        android:layout_height="26dp"
+        android:layout_width="130dp"
+        android:layout_height="23dp"
         android:background="@null"
         android:ems="10"
-        android:fontFamily="@font/ntr"
+        android:fontFamily="@font/hind_madurai_semibold"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textColor="#EA7046"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.831"
+        app:layout_constraintHorizontal_bias="0.844"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.56" />
+        app:layout_constraintVertical_bias="0.565" />
 
     <Button
         android:id="@+id/btnRegTwo"

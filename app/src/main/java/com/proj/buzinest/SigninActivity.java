@@ -34,7 +34,6 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
     private FirebaseAuth mAuth;
     private ProgressBar progressBar, passStrength;
     private TextView strengthView;
-    private CheckBox checkBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +53,6 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
         progressBar = findViewById(R.id.progressBar);
         passStrength = findViewById(R.id.passStrength);
         strengthView = findViewById(R.id.password_strength);
-        checkBox = findViewById(R.id.checkBox);
         edtUsernameSignIn.animate().alpha(1).setDuration(1000);
         edtEmailSignIn.animate().alpha(1).setDuration(1000);
         edtPasswordSignIn.animate().alpha(1).setDuration(1000);
@@ -123,7 +121,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                             if(task.isSuccessful()){
                                 Toast.makeText(SigninActivity.this,username+" has been registered successfully", Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
-                                startActivity(new Intent(SigninActivity.this, HomeActivity.class));
+                                startActivity(new Intent(SigninActivity.this, LoginActivity.class));
                             } else {
                                 Toast.makeText(SigninActivity.this,"Failed to register. Try again!", Toast.LENGTH_LONG).show();
                                 progressBar.setVisibility(View.GONE);
@@ -131,7 +129,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                         }
                     });
                 }else{
-                    Toast.makeText(SigninActivity.this,"Failed to register. Try again!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SigninActivity.this,"Account with username/email already exists", Toast.LENGTH_LONG).show();
                     progressBar.setVisibility(View.GONE);
                 }
             }
