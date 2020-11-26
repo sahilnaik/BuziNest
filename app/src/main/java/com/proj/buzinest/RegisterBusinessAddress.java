@@ -103,7 +103,7 @@ public class RegisterBusinessAddress extends AppCompatActivity {
                         if(task.isSuccessful()){
                             Toast.makeText(RegisterBusinessAddress.this,"Address has been registered successfully", Toast.LENGTH_SHORT).show();
                             progressBar5.setVisibility(View.GONE);
-                            startActivity(new Intent(RegisterBusinessAddress.this, RegisterBusinessAddress.class));
+                            startActivity(new Intent(RegisterBusinessAddress.this, BusinessProfile.class));
                         } else {
                             Toast.makeText(RegisterBusinessAddress.this,"Failed to register. Try again!", Toast.LENGTH_LONG).show();
                             progressBar5.setVisibility(View.GONE);
