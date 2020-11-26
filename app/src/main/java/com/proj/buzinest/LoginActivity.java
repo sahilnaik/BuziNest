@@ -18,12 +18,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText edtEmailLogIn, edtPasswordLogIn;
     private Button btnLogIn, btnForgotPass, btnSignLogIn;
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
+    private String userID;
+    private FirebaseUser user;
+    private DatabaseReference checkAddress;
 
 
     @Override
@@ -48,6 +53,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnSignLogIn.animate().alpha(1).setDuration(1700);
         edtPasswordLogIn.animate().translationY(-70).setDuration(700);
         edtEmailLogIn.animate().translationY(-70).setDuration(700);
+
+
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            userID = user.getUid();
+            checkAddress = FirebaseDatabase.getInstance().getReference().child(userID).child("Address");
+            if(checkAddress != null){
+                startActivity(new Intent(LoginActivity.this, BusinessProfile.class));
+            }
+            else{
+                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            }
+
+        } else
+            {
+
+        }
     }
 
     @Override

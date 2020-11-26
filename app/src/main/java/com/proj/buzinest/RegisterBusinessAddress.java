@@ -74,26 +74,32 @@ public class RegisterBusinessAddress extends AppCompatActivity {
                 if(AddressOne.isEmpty()){
                     edtAddressOne.setError("Address Line 1 required");
                     edtAddressOne.requestFocus();
+                    return;
                 }
                 if(AddressTwo.isEmpty()){
-                    edtAddressTwo.setError("Address Line 1 required");
+                    edtAddressTwo.setError("Address Line 2 required");
                     edtAddressTwo.requestFocus();
+                    return;
                 }
                 if(Landmark.isEmpty()){
-                    edtLandmark.setError("Address Line 1 required");
+                    edtLandmark.setError("Landmark required");
                     edtLandmark.requestFocus();
+                    return;
                 }
                 if(City.isEmpty()){
-                    edtCity.setError("Address Line 1 required");
+                    edtCity.setError("City required");
                     edtCity.requestFocus();
+                    return;
                 }
                 if(Country.isEmpty()){
-                    edtCountry.setError("Address Line 1 required");
+                    edtCountry.setError("Country required");
                     edtCountry.requestFocus();
+                    return;
                 }
                 if(State.isEmpty()){
-                    edtState.setError("Address Line 1 required");
+                    edtState.setError("State required");
                     edtState.requestFocus();
+                    return;
                 }
                 progressBar5.setVisibility(View.VISIBLE);
                 RegAddress addr = new RegAddress(AddressOne, AddressTwo, State, City, Country, Landmark);

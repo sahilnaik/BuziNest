@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 public class HomeActivity extends AppCompatActivity{
     private Button btnLogoutHome, btnRegister, btnExploreHome, btnCartHome, btnChatHome;
     private FirebaseUser user;
-    private DatabaseReference reference;
+    private DatabaseReference reference, checkAddress;
     private String userID;
 
     @Override
@@ -33,6 +33,13 @@ public class HomeActivity extends AppCompatActivity{
         btnExploreHome = findViewById(R.id.btnExploreHome);
         btnCartHome = findViewById(R.id.btnCartHome);
         btnChatHome = findViewById(R.id.btnChatHome);
+
+        checkAddress = FirebaseDatabase.getInstance().getReference().child(userID).child("Address");
+        if(checkAddress != null){
+            startActivity(new Intent(HomeActivity.this, BusinessProfile.class));
+        }
+        else {}
+
         btnRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, RegisterBusiness.class));
