@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChatPage"></activity>
+        <activity android:name=".AccountSettings"></activity>
+        <activity android:name=".ChatPage" />
         <activity android:name=".BusinessProfile" />
         <activity android:name=".RegisterBusinessAddress" />
         <activity android:name=".RegisterBusiness" />
