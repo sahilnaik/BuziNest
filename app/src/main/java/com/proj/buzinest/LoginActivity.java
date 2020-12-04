@@ -18,8 +18,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText edtEmailLogIn, edtPasswordLogIn;
@@ -28,7 +31,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private ProgressBar progressBar;
     private String userID;
     private FirebaseUser user;
-    private DatabaseReference checkAddress;
+    private DatabaseReference reference;
 
 
     @Override
@@ -54,21 +57,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         edtPasswordLogIn.animate().translationY(-70).setDuration(700);
         edtEmailLogIn.animate().translationY(-70).setDuration(700);
 
-
-
+        reference = FirebaseDatabase.getInstance().getReference("Users");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
+            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             userID = user.getUid();
-            checkAddress = FirebaseDatabase.getInstance().getReference().child(userID).child("Address");
-            if(checkAddress != null){
-                startActivity(new Intent(LoginActivity.this, BusinessProfile.class));
-            }
-            else{
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-            }
+            reference.child(userID).child("Address").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()){
+                        startActivity(new Intent(LoginActivity.this, BusinessProfile.class));
+                    }
 
-        } else
-            {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
 
         }
     }

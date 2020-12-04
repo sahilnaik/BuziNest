@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 public class HomeActivity extends AppCompatActivity{
     private Button btnLogoutHome, btnRegister, btnExploreHome, btnCartHome, btnChatHome;
     private FirebaseUser user;
-    private DatabaseReference reference, checkAddress;
+    private DatabaseReference reference;
     private String userID;
 
     @Override
@@ -34,11 +34,28 @@ public class HomeActivity extends AppCompatActivity{
         btnCartHome = findViewById(R.id.btnCartHome);
         btnChatHome = findViewById(R.id.btnChatHome);
 
-        checkAddress = FirebaseDatabase.getInstance().getReference().child(userID).child("Address");
-        if(checkAddress != null){
-            startActivity(new Intent(HomeActivity.this, BusinessProfile.class));
-        }
-        else {}
+
+        reference = FirebaseDatabase.getInstance().getReference("Users");
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        userID = user.getUid();
+        if (user != null) {
+
+
+      reference.child(userID).child("Address").addValueEventListener(new ValueEventListener() {
+          @Override
+          public void onDataChange(@NonNull DataSnapshot snapshot) {
+              if (snapshot.exists()){
+                  startActivity(new Intent(HomeActivity.this, BusinessProfile.class));
+              }
+
+          }
+
+          @Override
+          public void onCancelled(@NonNull DatabaseError error) {
+
+          }
+      });}
+
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -55,7 +72,7 @@ public class HomeActivity extends AppCompatActivity{
         btnChatHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  startActivity();
+                startActivity(new Intent(HomeActivity.this, ChatPage.class));
             }
         });
 
@@ -74,9 +91,7 @@ public class HomeActivity extends AppCompatActivity{
             }
         });
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        userID = user.getUid();
+
         final TextView greeting = (TextView) findViewById(R.id.greeting);
         final TextView notGreeting = (TextView) findViewById(R.id.notGreeting);
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -87,7 +102,7 @@ public class HomeActivity extends AppCompatActivity{
                     String username = userProfile.Username;
                     greeting.setText("Welcome, " + username+"!");
                     notGreeting.setText(username+"?");
-                    Log.i("LOGO",username);
+
                 }
             }
 
@@ -97,5 +112,6 @@ public class HomeActivity extends AppCompatActivity{
 
             }
         });
+
     }
 }
