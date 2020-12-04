@@ -62,6 +62,10 @@ public class ChatPage extends AppCompatActivity {
             case R.id.accountSettings:
                 Intent intent= new Intent(ChatPage.this, AccountSettings.class);
                 startActivity(intent);
+            case R.id.allUsers:
+                Intent intento= new Intent(ChatPage.this, AllUsers.class);
+                startActivity(intento);
+
 
         }
         return false;

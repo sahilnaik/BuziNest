@@ -9,5 +9,9 @@
         android:id="@+id/accountSettings"
         android:title="Account Settings"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/allUsers"
+        android:title="All Users"
+        app:showAsAction="never"/>
 
 </menu>
