@@ -12,16 +12,12 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.telecom.Call;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -35,8 +31,6 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
-import java.net.URI;
-import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -97,7 +91,7 @@ public class BusinessProfile extends AppCompatActivity {
             }
         });
 
-        profile_image = findViewById(R.id.profile_image);
+        profile_image = findViewById(R.id.profilepicSetting);
         profile_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
