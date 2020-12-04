@@ -21,10 +21,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.annotations.NotNull;
 import com.ybs.passwordstrengthmeter.PasswordStrength;
 
+import java.util.HashMap;
 import java.util.regex.Pattern;
 
 public class SigninActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher{
@@ -34,6 +37,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
     private FirebaseAuth mAuth;
     private ProgressBar progressBar, passStrength;
     private TextView strengthView;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,8 +117,18 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    User user= new User(username, email, password);
-                    FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                    FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
+                    String userId = current_user.getUid();
+                    mDatabase = FirebaseDatabase.getInstance().getReference("Users").child(userId);
+                    HashMap<String, String> userMap = new HashMap<>();
+                    userMap.put("Username", username);
+                    userMap.put("Status", "Busy with BuziNest");
+                    userMap.put("image", "default");
+                    userMap.put("thumb_image","default");
+                    userMap.put("email", email);
+                    userMap.put("password", password);
+                    mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
 

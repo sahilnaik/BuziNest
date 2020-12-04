@@ -25,6 +25,7 @@ import java.util.ArrayList;
 public class ChatPage extends AppCompatActivity {
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +59,9 @@ public class ChatPage extends AppCompatActivity {
                 startActivity(new Intent(ChatPage.this, LoginActivity.class));
                 finish();
                 return true;
+            case R.id.accountSettings:
+                Intent intent= new Intent(ChatPage.this, AccountSettings.class);
+                startActivity(intent);
 
         }
         return false;
