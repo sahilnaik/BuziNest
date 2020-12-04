@@ -52,7 +52,7 @@ public class BusinessProfile extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
 
-        checkProfileImage = FirebaseStorage.getInstance().getReference().child(userID).child("Images").child("Profile picture");
+        checkProfileImage = FirebaseStorage.getInstance().getReference().child(userID).child("Profile Picture").child(userID);
         if(checkProfileImage != null){
             checkProfileImage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
@@ -146,7 +146,7 @@ public class BusinessProfile extends AppCompatActivity {
 
 
 
-        final UploadTask uploadTask = FirebaseStorage.getInstance().getReference().child(userID).child("Images").child("Profile picture").putBytes(data);
+        final UploadTask uploadTask = FirebaseStorage.getInstance().getReference().child(userID).child("Profile Picture").child(userID).putBytes(data);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
