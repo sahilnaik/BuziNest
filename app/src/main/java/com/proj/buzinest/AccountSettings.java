@@ -137,7 +137,7 @@ public class AccountSettings extends AppCompatActivity {
                                 }
                             });
                         }else {
-                            Toast.makeText(AccountSettings.this,"Error",Toast.LENGTH_LONG).show();
+                            Toast.makeText(AccountSettings.this,"Error...",Toast.LENGTH_LONG).show();
                             progressDialog.dismiss();
                         }
                     }
