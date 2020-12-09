@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,7 @@ import java.io.ByteArrayOutputStream;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class BusinessProfile extends AppCompatActivity {
+public class BusinessProfile extends AppCompatActivity implements View.OnClickListener {
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
@@ -42,11 +43,17 @@ public class BusinessProfile extends AppCompatActivity {
     private Bitmap bitmap;
     private StorageReference checkProfileImage;
     private String imageDownloadLink;
+    private Button btnBusinessChat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_profile);
+
+        btnBusinessChat = findViewById(R.id.btnBusinessChat);
+        btnBusinessChat.setOnClickListener(this);
+
+
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -167,4 +174,12 @@ public class BusinessProfile extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnBusinessChat:
+                startActivity(new Intent(this, ChatPage.class));
+                break;
+        }
+    }
 }

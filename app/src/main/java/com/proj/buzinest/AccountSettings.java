@@ -29,7 +29,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.PicassoProvider;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -73,7 +72,7 @@ public class AccountSettings extends AppCompatActivity {
 
                 usernameSetting.setText(name);
                 mstatus.setText(status);
-                Picasso.get().load(image).into(profilepicSetting);
+                Picasso.get().load(image).placeholder(R.drawable.hqdefault).into(profilepicSetting);
             }
 
             @Override

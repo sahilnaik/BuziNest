@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +18,11 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class AllUsers extends AppCompatActivity {
@@ -65,6 +69,7 @@ public class AllUsers extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull UsersViewHolder holder, int position, @NonNull User model) {
                 holder.setName(model.Username);
                 holder.setStatus(model.Status);
+                holder.setImage(model.image);
             }
 
             @NonNull
@@ -101,6 +106,11 @@ public class AllUsers extends AppCompatActivity {
         public void setStatus(String status) {
             TextView statusView = mView.findViewById(R.id.user_single_status);
             statusView.setText(status);
+        }
+
+        public void setImage(String Image) {
+            CircleImageView userImageView = mView.findViewById(R.id.user_single_image);
+            Picasso.get().load(Image).placeholder(R.drawable.hqdefault).into(userImageView);
         }
     }
 }
