@@ -37,13 +37,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class BusinessProfile extends AppCompatActivity implements View.OnClickListener {
     private FirebaseUser user;
-    private DatabaseReference reference;
+    private DatabaseReference reference, checkProfileImage;
     private String userID;
     private CircleImageView profile_image;
     private Bitmap bitmap;
-    private StorageReference checkProfileImage;
+
     private String imageDownloadLink;
-    private Button btnBusinessChat;
+    private Button btnBusinessChat, btnBusAccountSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,22 +53,30 @@ public class BusinessProfile extends AppCompatActivity implements View.OnClickLi
         btnBusinessChat = findViewById(R.id.btnBusinessChat);
         btnBusinessChat.setOnClickListener(this);
 
+        btnBusAccountSettings = findViewById(R.id.btnBusAccSettings);
+        btnBusAccountSettings.setOnClickListener(this);
+
 
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
 
-        checkProfileImage = FirebaseStorage.getInstance().getReference().child(userID).child("Profile Picture").child(userID);
-        if(checkProfileImage != null){
-            checkProfileImage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
-                public void onSuccess(Uri uri) {
-                    Picasso.get().load(uri).into(profile_image);
-                }
-            });
+        checkProfileImage = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
+        checkProfileImage.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String image = snapshot.child("image").getValue().toString();
 
-        }
+
+                Picasso.get().load(image).placeholder(R.drawable.hqdefault).into(profile_image);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         final TextView txtBuzName = (TextView) findViewById(R.id.txtBuzName);
         final TextView txtUsername = (TextView) findViewById(R.id.txtUsername);
@@ -98,7 +106,7 @@ public class BusinessProfile extends AppCompatActivity implements View.OnClickLi
             }
         });
 
-        profile_image = findViewById(R.id.profilepicSetting);
+        profile_image = findViewById(R.id.busprofilepicSetting);
         profile_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -180,6 +188,10 @@ public class BusinessProfile extends AppCompatActivity implements View.OnClickLi
             case R.id.btnBusinessChat:
                 startActivity(new Intent(this, ChatPage.class));
                 break;
+            case R.id.btnBusAccSettings:
+                startActivity(new Intent(this, BusinessAccountSettings.class));
+                break;
+
         }
     }
 }

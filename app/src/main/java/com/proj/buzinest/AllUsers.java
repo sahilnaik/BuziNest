@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,6 +71,15 @@ public class AllUsers extends AppCompatActivity {
                 holder.setName(model.Username);
                 holder.setStatus(model.Status);
                 holder.setImage(model.image);
+                final String userId = getRef(position).getKey();
+                holder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent profileIntent = new Intent(AllUsers.this, ProfileActivity.class);
+                        profileIntent.putExtra("userId", userId);
+                        startActivity(profileIntent);
+                    }
+                });
             }
 
             @NonNull

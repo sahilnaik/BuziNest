@@ -31,7 +31,7 @@ import com.theartofdev.edmodo.cropper.CropImage;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class AccountSettings extends AppCompatActivity {
+public class BusinessAccountSettings extends AppCompatActivity {
     private DatabaseReference reference;
     private FirebaseUser user;
     private CircleImageView profilepicSetting;
@@ -63,6 +63,7 @@ public class AccountSettings extends AppCompatActivity {
                 String name = snapshot.child("Username").getValue().toString();
                 String image = snapshot.child("image").getValue().toString();
                 String status = snapshot.child("Status").getValue().toString();
+
                 String thumb_image = snapshot.child("thumb_image").getValue().toString();
 
                 usernameSetting.setText(name);
@@ -81,7 +82,7 @@ public class AccountSettings extends AppCompatActivity {
             public void onClick(View v) {
                 String username_value = usernameSetting.getText().toString();
                 String status_value = mstatus.getText().toString();
-                Intent status_intent =new Intent(AccountSettings.this, StatusActivity.class);
+                Intent status_intent =new Intent(BusinessAccountSettings.this, StatusActivity.class);
                 status_intent.putExtra("status_value",status_value);
                 status_intent.putExtra("username_value", username_value);
                 startActivity(status_intent);
@@ -106,12 +107,12 @@ public class AccountSettings extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == GALLERY_PICK && resultCode == RESULT_OK){
             Uri imageUri = data.getData();
-            CropImage.activity(imageUri).setAspectRatio(1,1).start(AccountSettings.this);
+            CropImage.activity(imageUri).setAspectRatio(1,1).start(BusinessAccountSettings.this);
         }
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
-                progressDialog = new ProgressDialog(AccountSettings.this);
+                progressDialog = new ProgressDialog(BusinessAccountSettings.this);
                 progressDialog.setTitle("Uploading Image");
                 progressDialog.setMessage("Please wait");
                 progressDialog.setCanceledOnTouchOutside(false);
@@ -131,7 +132,7 @@ public class AccountSettings extends AppCompatActivity {
                                 }
                             });
                         }else {
-                            Toast.makeText(AccountSettings.this,"Error...",Toast.LENGTH_LONG).show();
+                            Toast.makeText(BusinessAccountSettings.this,"Error...",Toast.LENGTH_LONG).show();
                             progressDialog.dismiss();
                         }
                     }
