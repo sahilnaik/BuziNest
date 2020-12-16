@@ -12,13 +12,19 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.telecom.Call;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +38,9 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -40,10 +49,12 @@ public class BusinessProfile extends AppCompatActivity implements View.OnClickLi
     private DatabaseReference reference, checkProfileImage;
     private String userID;
     private CircleImageView profile_image;
+    private ImageView imgUpload;
     private Bitmap bitmap;
-
+    private String imageIdentifier;
+    private EditText edtDescription;
+    private Button btnBusinessChat, btnBusAccountSettings, btnUploadPost, btnViewPosts;
     private String imageDownloadLink;
-    private Button btnBusinessChat, btnBusAccountSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +63,18 @@ public class BusinessProfile extends AppCompatActivity implements View.OnClickLi
 
         btnBusinessChat = findViewById(R.id.btnBusinessChat);
         btnBusinessChat.setOnClickListener(this);
+        profile_image = findViewById(R.id.busprofilepicSetting);
 
         btnBusAccountSettings = findViewById(R.id.btnBusAccSettings);
         btnBusAccountSettings.setOnClickListener(this);
 
+        btnUploadPost = findViewById(R.id.btnUploadPost);
+        btnUploadPost.setOnClickListener(this);
 
+        btnViewPosts = findViewById(R.id.btnViewPosts);
+        btnViewPosts.setOnClickListener(this);
+
+        edtDescription = findViewById(R.id.edtDescription);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -106,8 +124,10 @@ public class BusinessProfile extends AppCompatActivity implements View.OnClickLi
             }
         });
 
-        profile_image = findViewById(R.id.busprofilepicSetting);
-        profile_image.setOnClickListener(new View.OnClickListener() {
+
+
+        imgUpload = findViewById(R.id.imgUpload);
+        imgUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectImage();
@@ -141,10 +161,12 @@ public class BusinessProfile extends AppCompatActivity implements View.OnClickLi
 
         if(requestCode == 1000 && resultCode == RESULT_OK && data != null){
             Uri chosenImageData = data.getData();
+            edtDescription.setVisibility(View.VISIBLE);
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), chosenImageData);
-                profile_image.setImageBitmap(bitmap);
-                uploadImageToServer();
+                imgUpload.setImageBitmap(bitmap);
+
+
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -152,16 +174,18 @@ public class BusinessProfile extends AppCompatActivity implements View.OnClickLi
     }
 
     private void uploadImageToServer(){
+        imageIdentifier = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        Log.i("DATELOG", imageIdentifier);
         if(bitmap!= null){
-        profile_image.setDrawingCacheEnabled(true);
-        profile_image.buildDrawingCache();
+        imgUpload.setDrawingCacheEnabled(true);
+        imgUpload.buildDrawingCache();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
         byte[] data = baos.toByteArray();
 
 
 
-        final UploadTask uploadTask = FirebaseStorage.getInstance().getReference().child(userID).child("Profile Picture").child(userID).putBytes(data);
+        final UploadTask uploadTask = FirebaseStorage.getInstance().getReference().child(userID).child("Posts").child(imageIdentifier).putBytes(data);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
@@ -173,12 +197,40 @@ public class BusinessProfile extends AppCompatActivity implements View.OnClickLi
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
                 // ...
-                Toast.makeText(BusinessProfile.this, "Profile picture updated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(BusinessProfile.this, "Post Updated", Toast.LENGTH_SHORT).show();
+
+                taskSnapshot.getMetadata().getReference().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        if (task.isSuccessful()){
+                            imageDownloadLink = task.getResult().toString();
+                            reference.child(userID).child("Postings").child(imageIdentifier).child("ImageURL").setValue(imageDownloadLink).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+
+                                }
+                            });
+                        }
+                    }
+                });
+
             }
 
         });
 
+
     }
+        String Description = edtDescription.getText().toString();
+        reference.child(userID).child("Postings").child(imageIdentifier).child("Description").setValue(Description).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+
+                }
+            }
+        });
+
+
     }
 
 
@@ -191,6 +243,18 @@ public class BusinessProfile extends AppCompatActivity implements View.OnClickLi
             case R.id.btnBusAccSettings:
                 startActivity(new Intent(this, BusinessAccountSettings.class));
                 break;
+            case R.id.btnUploadPost:
+                uploadImageToServer();
+
+                imgUpload.setImageResource(R.drawable.mask_group_26);
+                edtDescription.setText("");
+                edtDescription.setVisibility(View.GONE);
+                break;
+            case R.id.btnViewPosts:
+                String userId_value = userID;
+                Intent status_intent =new Intent(BusinessProfile.this, UserPostsBusiness.class);
+                status_intent.putExtra("userId_value",userId_value);
+                startActivity(status_intent);
 
         }
     }

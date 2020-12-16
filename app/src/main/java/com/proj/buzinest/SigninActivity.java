@@ -128,6 +128,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                     userMap.put("thumb_image","default");
                     userMap.put("email", email);
                     userMap.put("password", password);
+
                     mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
