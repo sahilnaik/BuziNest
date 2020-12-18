@@ -17,8 +17,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -41,6 +44,20 @@ public class RegisterBusiness extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
+        reference.child(userID).child("Address").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    startActivity(new Intent(RegisterBusiness.this, BusinessProfile.class));
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         progressBar4 = findViewById(R.id.progressBar4);
         btnRegOne.setOnClickListener(new View.OnClickListener() {
             class BusinessAddress {
@@ -79,7 +96,7 @@ public class RegisterBusiness extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(RegisterBusiness.this,BizName+" has been registered successfully", Toast.LENGTH_SHORT).show();
+
                             progressBar4.setVisibility(View.GONE);
                             startActivity(new Intent(RegisterBusiness.this, RegisterBusinessAddress.class));
                         } else {

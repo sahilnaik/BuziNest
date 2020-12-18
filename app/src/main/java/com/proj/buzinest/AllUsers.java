@@ -57,14 +57,8 @@ public class AllUsers extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        Query query = FirebaseDatabase.getInstance()
-                .getReference()
-                .child("Users")
-                .limitToLast(50);
-        FirebaseRecyclerOptions<User> options =
-                new FirebaseRecyclerOptions.Builder<User>()
-                        .setQuery(mUserDatabase, User.class)
-                        .build();
+        Query query = FirebaseDatabase.getInstance().getReference().child("Users").limitToLast(50);
+        FirebaseRecyclerOptions<User> options = new FirebaseRecyclerOptions.Builder<User>().setQuery(mUserDatabase, User.class).build();
         FirebaseRecyclerAdapter<User, UsersViewHolder> adapter = new FirebaseRecyclerAdapter<User, UsersViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull UsersViewHolder holder, int position, @NonNull User model) {

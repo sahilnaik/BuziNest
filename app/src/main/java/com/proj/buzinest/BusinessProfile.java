@@ -3,6 +3,7 @@ package com.proj.buzinest;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
@@ -14,6 +15,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.telecom.Call;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,6 +40,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -53,7 +58,8 @@ public class BusinessProfile extends AppCompatActivity implements View.OnClickLi
     private Bitmap bitmap;
     private String imageIdentifier;
     private EditText edtDescription;
-    private Button btnBusinessChat, btnBusAccountSettings, btnUploadPost, btnViewPosts;
+    private Button btnBusinessChat, btnBusAccountSettings, btnUploadPost, btnViewPosts, btnUsers, btnBack, btnLocation;
+    private TextView txtDesc;
     private String imageDownloadLink;
 
     @Override
@@ -61,12 +67,29 @@ public class BusinessProfile extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_profile);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Profile");
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+
+        txtDesc = findViewById(R.id.txtDesc);
+
         btnBusinessChat = findViewById(R.id.btnBusinessChat);
         btnBusinessChat.setOnClickListener(this);
+
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(this);
+
+        btnLocation = findViewById(R.id.btnLocation);
+        btnLocation.setOnClickListener(this);
+
         profile_image = findViewById(R.id.busprofilepicSetting);
 
         btnBusAccountSettings = findViewById(R.id.btnBusAccSettings);
         btnBusAccountSettings.setOnClickListener(this);
+
+        btnUsers = findViewById(R.id.btnUsers);
+        btnUsers.setOnClickListener(this);
 
         btnUploadPost = findViewById(R.id.btnUploadPost);
         btnUploadPost.setOnClickListener(this);
@@ -85,9 +108,9 @@ public class BusinessProfile extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String image = snapshot.child("image").getValue().toString();
-
-
                 Picasso.get().load(image).placeholder(R.drawable.hqdefault).into(profile_image);
+                String desc = snapshot.child("Status").getValue().toString();
+                txtDesc.setText(desc);
             }
 
             @Override
@@ -98,16 +121,33 @@ public class BusinessProfile extends AppCompatActivity implements View.OnClickLi
 
         final TextView txtBuzName = (TextView) findViewById(R.id.txtBuzName);
         final TextView txtUsername = (TextView) findViewById(R.id.txtUsername);
+        final TextView txtContact = findViewById(R.id.txtContact);
         reference.child(userID).child("Details").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String Contact = snapshot.child("contact").getValue().toString();
+                    txtContact.setText(Contact);
                 String Bizname = snapshot.child("BizName").getValue().toString();
                     txtBuzName.setText(Bizname);
+
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(BusinessProfile.this,"Some error occurred", Toast.LENGTH_LONG).show();
+
+            }
+        });
+        reference.child(userID).child("Status").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String desc = snapshot.getValue().toString();
+                txtDesc.setText(desc);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
@@ -134,6 +174,32 @@ public class BusinessProfile extends AppCompatActivity implements View.OnClickLi
             }
         });
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menubuz, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logOut:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(BusinessProfile.this, LoginActivity.class));
+                finish();
+                return true;
+            case R.id.accountSettings:
+                Intent intent= new Intent(BusinessProfile.this, AccountSettings.class);
+                startActivity(intent);
+                break;
+        }
+        return false;
+    }
+
+
+
 
     private void selectImage() {
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
@@ -237,9 +303,7 @@ public class BusinessProfile extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btnBusinessChat:
-                startActivity(new Intent(this, ChatPage.class));
-                break;
+
             case R.id.btnBusAccSettings:
                 startActivity(new Intent(this, BusinessAccountSettings.class));
                 break;
@@ -251,10 +315,20 @@ public class BusinessProfile extends AppCompatActivity implements View.OnClickLi
                 edtDescription.setVisibility(View.GONE);
                 break;
             case R.id.btnViewPosts:
-                String userId_value = userID;
+                String userId = userID;
                 Intent status_intent =new Intent(BusinessProfile.this, UserPostsBusiness.class);
-                status_intent.putExtra("userId_value",userId_value);
+                status_intent.putExtra("userId",userId);
                 startActivity(status_intent);
+                break;
+            case R.id.btnUsers:
+                startActivity(new Intent(this, AllUsers.class));
+                break;
+            case  R.id.btnBack:
+                startActivity(new Intent(this, HomeActivity.class));
+                break;
+            case R.id.btnLocation:
+                startActivity(new Intent(this, MapsActivity.class));
+
 
         }
     }

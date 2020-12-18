@@ -35,26 +35,11 @@ public class HomeActivity extends AppCompatActivity{
         btnChatHome = findViewById(R.id.btnChatHome);
 
 
+
         reference = FirebaseDatabase.getInstance().getReference("Users");
         user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
-        if (user != null) {
 
-
-      reference.child(userID).child("Address").addValueEventListener(new ValueEventListener() {
-          @Override
-          public void onDataChange(@NonNull DataSnapshot snapshot) {
-              if (snapshot.exists()){
-                  startActivity(new Intent(HomeActivity.this, BusinessProfile.class));
-              }
-
-          }
-
-          @Override
-          public void onCancelled(@NonNull DatabaseError error) {
-
-          }
-      });}
 
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +50,7 @@ public class HomeActivity extends AppCompatActivity{
         btnExploreHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  startActivity();
+              startActivity(new Intent(HomeActivity.this, AllUsers.class));
             }
         });
 
@@ -79,6 +64,7 @@ public class HomeActivity extends AppCompatActivity{
         btnCartHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, AccountSettings.class));
              //   startActivity();
             }
         });
